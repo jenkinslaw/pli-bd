@@ -82,6 +82,7 @@
     filter[String.fromCharCode(167)] = " sec. ";
     filter[String.fromCharCode(182)] = " sec. ";
     filter[String.fromCharCode(32)] = String.fromCharCode(32);
+    filter['Chapter [0-9]*:'] = '';
     
     if (content != undefined) {
       
