@@ -84,7 +84,7 @@
     filter[String.fromCharCode(32)] = String.fromCharCode(32);
     filter['Chapter [0-9]*:'] = '';
     
-    if (content != undefined) {
+    if (content !== undefined) {
       
       // remove any character that is not ascii
       for (i in content) {
