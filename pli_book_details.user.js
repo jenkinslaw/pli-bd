@@ -101,7 +101,7 @@
       OCLC_string = OCLC_string.replace(reg, "_title_prepend_");
       
       // filter the string with our filter
-      for (key in filter) {
+      for (var key in filter) {
         var reg = new RegExp(key, "g");
         OCLC_string = OCLC_string.replace(reg, filter[key]);
         
