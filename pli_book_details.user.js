@@ -102,7 +102,7 @@
       
       // filter the string with our filter
       for (var key in filter) {
-        var reg = new RegExp(key, "g");
+        reg = new RegExp(key, "g");
         OCLC_string = OCLC_string.replace(reg, filter[key]);
         
       }
@@ -111,7 +111,7 @@
       OCLC_string = OCLC_string.replace('--', '');
       
       // remove the last author tag from end of string when by itself:
-      var reg = RegExp(String.fromCharCode(32, 47, 32, 450, 114, 32, 36));
+      reg = RegExp(String.fromCharCode(32, 47, 32, 450, 114, 32, 36));
       OCLC_string = OCLC_string.replace(reg, '');
       
       return OCLC_string;
