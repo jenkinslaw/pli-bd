@@ -69,7 +69,7 @@
    */
   function get_OCLC(content) {
     
-    var OCLC_string = new String();
+    var OCLC_string = '';
     var filter = new Array();
     
     // add any filters we need here
