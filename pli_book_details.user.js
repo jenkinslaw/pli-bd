@@ -137,8 +137,8 @@
           var parsed_response = get_OCLC(response.responseText);
           // Prepend OCLC formated text to table for easy access.
       $("#prodtabs1").prepend(
-          "<div style=\"background-color:#00FF00\">" + parsed_response
-              + "</div>");
+          "<div style=\"background-color:#00FF00\">" + parsed_response +
+          "</div>");
       
     }
     
