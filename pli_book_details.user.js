@@ -70,7 +70,7 @@
   function get_OCLC(content) {
     
     var OCLC_string = '';
-    var filter = new Array();
+    var filter = [];
     
     // add any filters we need here
     // as a filter[key] = value pair
