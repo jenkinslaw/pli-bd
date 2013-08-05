@@ -77,8 +77,8 @@
     // use charcodes or you'll run into troubles
     filter[String.fromCharCode(45)] = String.fromCharCode(32);
     filter[String.fromCharCode(173)] = String.fromCharCode(32);
-    filter["_title_prepend_"] = String.fromCharCode(32, 45, 45, 450, 116, 32);
-    filter["_auther_prepend_"] = String.fromCharCode(32, 47, 32, 450, 114, 32);
+    filter._title_prepend_ = String.fromCharCode(32, 45, 45, 450, 116, 32);
+    filter._auther_prepend_ = String.fromCharCode(32, 47, 32, 450, 114, 32);
     filter[String.fromCharCode(167)] = " sec. ";
     filter[String.fromCharCode(182)] = " sec. ";
     filter[String.fromCharCode(32)] = String.fromCharCode(32);
