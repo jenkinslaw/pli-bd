@@ -28,33 +28,32 @@
  */
 (function() {
 
-  // This will be executed onLoad
+  // This will be executed onLoad.
   var title_prepend = "_title_prepend_";
   var auther_prepend = "_auther_prepend_";
   var title_selector = "td.toc-description:not(:first):not(:last)";
   var auther_selector = "td.toc-faculty:has(a)";
   
-  // tag all title text
+  // Tag all title text.
   var titles = $(title_selector).prepend(title_prepend);
-  // tag all auther text
+  // Tag all auther text.
   var authers = $(auther_selector).prepend(auther_prepend);
   
-  // select all tagged text
+  // Select all tagged text.
   var OCLC_content = $(title_selector + ", " + auther_selector).text();
   
-  // prepend OCLC formated text to table for easy access
+  // Prepend OCLC formated text to table for easy access.
   $(".Description").prepend(
       "<div class=\"greasemonkey\" bgcolor=\"green\">" + get_OCLC(OCLC_content) + "</div>");
   
   // Once we are done with parsing the page, parse the pdf link:
   
   // Define a selector for elements "a" who are decendants 
-  // of elements with class ="left"
+  // of elements with class ="left".
   var article_href_selector = ".left a:first";
   
-  // get the pdf's url
+  // Get the pdf's url.
    var material_url = $(article_href_selector).attr("href");
-   //alert(material_url);
    if (material_url) {
      make_ajax();
    }
@@ -72,9 +71,8 @@
     var OCLC_string = '';
     var filter = [];
     
-    // add any filters we need here
-    // as a filter[key] = value pair
-    // use charcodes or you'll run into troubles
+    // Add any filters we need here as a filter[key] = value pairs.
+    // Use charcodes or you'll run into troubles.
     filter[String.fromCharCode(45)] = String.fromCharCode(32);
     filter[String.fromCharCode(173)] = String.fromCharCode(32);
     filter._title_prepend_ = String.fromCharCode(32, 45, 45, 450, 116, 32);
@@ -86,7 +84,7 @@
     
     if (content !== undefined) {
       
-      // remove any character that is not ascii
+      // Remove any character that is not ASCII.
       for (var character in content) {
         if (content.charCodeAt(character) <= 127) {
           OCLC_string += content[character];
@@ -96,29 +94,28 @@
         
       }
       
-      // remove _auther_prepend when there are no authers
+      // Remove _auther_prepend when there are no authors.
       var reg = new RegExp("_auther_prepend__title_prepend_", "g");
       OCLC_string = OCLC_string.replace(reg, "_title_prepend_");
       
-      // filter the string with our filter
+      // Filter the string with our filter.
       for (var key in filter) {
         reg = new RegExp(key, "g");
         OCLC_string = OCLC_string.replace(reg, filter[key]);
         
       }
       
-      // remove first two dashes from the front of string
+      // Remove first two dashes from the front of string.
       OCLC_string = OCLC_string.replace('--', '');
       
-      // remove the last author tag from end of string when by itself:
+      // Remove the last author tag from end of string when by itself:
       reg = RegExp(String.fromCharCode(32, 47, 32, 450, 114, 32, 36));
       OCLC_string = OCLC_string.replace(reg, '');
       
       return OCLC_string;
       
     }
-    
-  }// end fuction get_OCLC
+  }
   
   function make_ajax() {
     
@@ -143,13 +140,13 @@
     }
     
     /*
-     * use for debugging GM_log([ response.status, response.statusText,
+     * Use for debugging GM_log([ response.status, response.statusText,
      * response.readyState, response.responseHeaders, response.responseText,
      * response.finalUrl, response.responseXML ].join("\n"));
      */
 
   }
     });
-  }// end of make_ajax
+  }
 
 }());
