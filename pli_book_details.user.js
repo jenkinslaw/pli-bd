@@ -87,9 +87,9 @@
     if (content !== undefined) {
       
       // remove any character that is not ascii
-      for (i in content) {
-        if (content.charCodeAt(i) <= 127) {
-          OCLC_string += content[i];
+      for (var character in content) {
+        if (content.charCodeAt(character) <= 127) {
+          OCLC_string += content[character];
         } else {
           OCLC_string += " ";
         }
