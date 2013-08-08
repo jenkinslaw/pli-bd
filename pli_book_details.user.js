@@ -27,6 +27,7 @@
 // ==UserScript==
 */
 (function() {
+  "use strict";
 
   // This will be executed onLoad.
   var title_prepend = "_title_prepend_";
@@ -109,7 +110,7 @@
         OCLC_string = OCLC_string.replace('--', '');
 
         // Remove the last author tag from end of string when by itself:
-        reg = RegExp(String.fromCharCode(32, 47, 32, 450, 114, 32, 36));
+        reg = new RegExp(String.fromCharCode(32, 47, 32, 450, 114, 32, 36));
         OCLC_string = OCLC_string.replace(reg, '');
 
         return OCLC_string;
@@ -120,7 +121,7 @@
     function make_ajax() {
 
       // Make AJAX call to parse_pli_pdf.php
-      GM_xmlhttpRequest( {
+      var ajax_call = new GM_xmlhttpRequest({
         method : "POST",
         url : "http://intranet.jenkinslaw.org/jac/pli_pdf/parse_pli_pdf.php",
         data : "material_url=" + material_url,
@@ -129,7 +130,7 @@
         },
         onload : function(response) {
 
-          if (response.status == 200) {
+          if (response.status === 200) {
 
             var parsed_response = get_OCLC(response.responseText);
             // Prepend OCLC formated text to table for easy access.
