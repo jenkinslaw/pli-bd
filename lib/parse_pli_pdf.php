@@ -68,7 +68,6 @@ function get_pdf_text($material_url) {
   // Use url to wget the pdf file.
   system("wget -O /tmp/pli.pdf $material_url", $wget_status);
 
-
   // Use pdftotext program to get all the text from.
   exec("/usr/local/bin/pdftotext -layout /tmp/pli.pdf -",
   $pli_text_array, $pdftotext_status);
