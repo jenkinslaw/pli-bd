@@ -16,6 +16,8 @@
     "trailing":      true,
     "undef":         true,
     "predef"     : [
+        "casper",
+        "require"
         "JQuery",
         "$",
         "GM_xmlhttpRequest"
