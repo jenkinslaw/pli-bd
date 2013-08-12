@@ -54,5 +54,5 @@ User input:
 There is no user input for this script.
 Once it is installed the script automatically runs when the user goes to a page the script is supposed to work in.
 
-   [1]: https://github.com/jenkinslaw/pli-bd/raw/master/pli_book_details.user.js
+   [1]: https://github.com/jenkinslaw/pli-bd/raw/master/lib/pli_book_details.user.js
    [2]: http://wiki.greasespot.net/Main_Page
