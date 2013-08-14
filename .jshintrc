@@ -17,7 +17,7 @@
     "undef":         true,
     "predef"     : [
         "casper",
-        "require"
+        "require",
         "JQuery",
         "$",
         "GM_xmlhttpRequest"
