@@ -1,16 +1,16 @@
-var t              = casper.test;
-var system         = require('system');
-var _root_         = casper.cli.get('_root_');
-var Test           = function(){};
+var t = casper.test;
+var _root_ = fs.absolute('');
 
-t.begin("Test PLI parser", 1, function(test){
+casper.start();
+
+(function(){
   "use strict";
 
-  casper.start('/home/vagrant/pli-bd/tests/includes/test1.html', function(){
+  t.begin("Test page accessible.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      t.pass("The page is accessible via GET.")
+    });
+    casper.run(function(){t.done();});
   });
 
-
-  casper.run(function(){test.done();});
-
-});
-
+}());

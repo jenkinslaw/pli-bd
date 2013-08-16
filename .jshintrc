@@ -20,6 +20,12 @@
         "require",
         "JQuery",
         "$",
-        "GM_xmlhttpRequest"
+        "GM_xmlhttpRequest",
+        "fs",
+        "colorizer",
+        "utils",
+        "f",
+        "loadIncludes",
+        "tests"
     ]
 }
