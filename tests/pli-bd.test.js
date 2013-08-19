@@ -25,14 +25,6 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
-  t.begin("Test title_prepend.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
-      t.assertEqual(pli_bd.title_prepend, '_title_prepend_');
-    });
-
-    casper.run(function(){t.done();});
-  });
-
   t.begin("Test title selector.", 1, function(){
     casper.open(_root_ + '/tests/includes/test1.html').then(function() {
       var actual = casper.evaluate(function(){
@@ -40,6 +32,20 @@ casper.start();
       });
 
       t.assertEqual(actual, 42, "The title selector is working as expected.");
+
+    });
+
+    casper.run(function(){t.done();});
+  });
+
+  t.begin("Test title prepend.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      var actual = casper.evaluate(function(){
+        var pattern = pli_bd.title_prepend
+        return $(pli_bd.title_selector).first().text().match(pattern).length;
+      });
+
+      t.assertEqual(actual, 1, "Check that the title is being prepended with: " + pli_bd.title_prepend);
 
     });
 
