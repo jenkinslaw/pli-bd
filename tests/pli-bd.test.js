@@ -46,4 +46,18 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
+  t.begin("Test auther selector.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      var actual = casper.evaluate(function(){
+        return $(pli_bd.auther_selector).length;
+      });
+
+      t.assertEqual(actual, 42, "The author selector is working as expected.");
+
+    });
+
+    casper.run(function(){t.done();});
+  });
+
+
 }());
