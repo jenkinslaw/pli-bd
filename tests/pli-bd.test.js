@@ -100,7 +100,7 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
-  t.begin("Grease Monkey Elment.", 1, function(){
+  t.begin("Test Grease Monkey Element added.", 1, function(){
     casper.open(_root_ + '/tests/includes/test1.html').then(function() {
       t.assertExists('.greasemonkey', "The Grease Monkey element has been added.");
     });
