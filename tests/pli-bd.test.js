@@ -79,10 +79,30 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
-  
   t.begin("The Description element exits.", 1, function(){
     casper.open(_root_ + '/tests/includes/test1.html').then(function() {
       t.assertExists('.Description', "The .Description element exists.");
+    });
+
+    casper.run(function(){t.done();});
+  });
+
+  t.begin("Test OCLE content is generated.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      var content = casper.evaluate(function(){
+        return pli_bd.OCLC_content;
+      });
+
+      t.assert(content !== '', "The OCLC content string is not empty.");
+
+    });
+
+    casper.run(function(){t.done();});
+  });
+
+  t.begin("Grease Monkey Elment.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      t.assertExists('.greasemonkey', "The Grease Monkey element has been added.");
     });
 
     casper.run(function(){t.done();});
