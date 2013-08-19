@@ -59,5 +59,21 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
+  t.begin("Test author prepend.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      var actual = casper.evaluate(function(){
+        var pattern = pli_bd.author_prepend
+        return $(pli_bd.author_selector).first().text().match(pattern).length;
+      });
+
+      t.assertEqual(actual, 1, "Check that the author is being prepended with: " + pli_bd.author_prepend);
+
+    });
+
+    casper.run(function(){t.done();});
+  });
+
+
+
 
 }());
