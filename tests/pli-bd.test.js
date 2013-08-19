@@ -79,7 +79,13 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
+  
+  t.begin("The Description element exits.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+      t.assertExists('.Description', "The .Description element exists.");
+    });
 
-
+    casper.run(function(){t.done();});
+  });
 
 }());
