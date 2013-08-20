@@ -12,4 +12,5 @@ else
 	casperjs test tests
 endif
 
-jshint: jshint .
+jshint:
+	jshint .
