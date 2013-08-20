@@ -14,7 +14,9 @@ Greasemokey will automatically detect the user script. Accept the default config
 
 To uninstall, go to Tools/Manage User Scripts, select "PLI BOOK DETAILS", and click Uninstall.
 
-*Note*: Since version 0.6.1  this module can also be loaded as a chrome script.  However ajax PDF reader component may not work.
+*Note*: Since version 0.6.1  this module can also be loaded as a chrome script.  However ajax PDF reader component may not work. Note also that in order to use this module as a chrome script you will first need to build it in order to add the required JQuery library. Just run:
+    
+    make chrome
 
 
 Modification:
