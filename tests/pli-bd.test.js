@@ -1,4 +1,4 @@
-/*global title_prepend phantom, pli_bd*/
+/*global title_prepend, phantom, pli_bd*/
 
 var t = casper.test;
 var _root_ = fs.absolute('');
@@ -19,14 +19,16 @@ casper.start();
   casper.start();
 
   t.begin("Test page accessible.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       t.pass("The page is accessible via GET.")
     });
     casper.run(function(){t.done();});
   });
 
   t.begin("Test title selector.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       var actual = casper.evaluate(function(){
         return $(pli_bd.title_selector).length;
       });
@@ -39,7 +41,8 @@ casper.start();
   });
 
   t.begin("Test title prepend.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       var actual = casper.evaluate(function(){
         var pattern = pli_bd.title_prepend
         return $(pli_bd.title_selector).first().text().match(pattern).length;
@@ -53,7 +56,8 @@ casper.start();
   });
 
   t.begin("Test author selector.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       var actual = casper.evaluate(function(){
         return $(pli_bd.author_selector).length;
       });
@@ -66,7 +70,8 @@ casper.start();
   });
 
   t.begin("Test author prepend.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       var actual = casper.evaluate(function(){
         var pattern = pli_bd.author_prepend
         return $(pli_bd.author_selector).first().text().match(pattern).length;
@@ -80,7 +85,8 @@ casper.start();
   });
 
   t.begin("The Description element exits.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       t.assertExists('.Description', "The .Description element exists.");
     });
 
@@ -88,7 +94,8 @@ casper.start();
   });
 
   t.begin("Test OCLE content is generated.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       var content = casper.evaluate(function(){
         return pli_bd.OCLC_content;
       });
@@ -101,7 +108,8 @@ casper.start();
   });
 
   t.begin("Test Grease Monkey Element added.", 1, function(){
-    casper.open(_root_ + '/tests/includes/test1.html').then(function() {
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
       t.assertExists('.greasemonkey', "The Grease Monkey element has been added.");
     });
 
