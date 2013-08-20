@@ -138,13 +138,18 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
-  t.begin("Test detail link.", 1, function(){
+  t.begin("Test detail link.", 2, function(){
     casper.open(_root_ + '/tests/includes/test1.html')
     .then(function() {
       var actual = casper.evaluate(function() {
         return $('a[href=#DetailTab2]').length;
       });
       t.assertEqual(actual, 1, "The detail link is present.");
+
+      actual = casper.evaluate(function() {
+        return $('li.ui-tabs-selected:has(a[href=#DetailTab2])').length;
+      });
+      t.assertEqual(actual, 1, "The detail tab is selected.");
     });
 
     casper.run(function(){t.done();});
