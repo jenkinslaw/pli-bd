@@ -1,4 +1,4 @@
-PLI Book Details:
+PLI Book Details: - [![Build Status](https://travis-ci.org/jenkinslaw/pli-bd.png?branch=master)](https://travis-ci.org/jenkinslaw/pli-bd)
 =================
 
 Function:
