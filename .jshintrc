@@ -24,7 +24,6 @@
         "fs",
         "colorizer",
         "utils",
-        "f",
         "loadIncludes",
         "tests"
     ]

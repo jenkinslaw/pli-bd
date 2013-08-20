@@ -1,5 +1,6 @@
 tmp
-./vendor
-./casperjs*
-./phantomjs*
+vendor
+casperjs
+phantomjs
+target
 
