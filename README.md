@@ -1,4 +1,4 @@
-PLI Book Details: - [![Build Status](https://travis-ci.org/jenkinslaw/pli-bd.png?branch=master)](https://travis-ci.org/jenkinslaw/pli-bd)
+PLI Book Details [![Build Status](https://travis-ci.org/jenkinslaw/pli-bd.png?branch=master)](https://travis-ci.org/jenkinslaw/pli-bd)
 =================
 
 Function:
@@ -14,6 +14,8 @@ Greasemokey will automatically detect the user script. Accept the default config
 
 To uninstall, go to Tools/Manage User Scripts, select "PLI BOOK DETAILS", and click Uninstall.
 
+*Note*: Since version 0.6.1  this module can also be loaded as a chrome script.  However ajax PDF reader component may not work.
+
 
 Modification:
 -------------
@@ -26,7 +28,7 @@ See details above for installation and uninstall process.
 This script uses both JQuery and GreaseMonkey technology.
 
 For a detail explanation on JQuery API usage go to http://api.jquery.com
-For a detail description of GreaseMonkey go to[ http://wiki.greasespot.net/Main_Page][2]
+For a detail description of GreaseMonkey go to the [Grease Monkey][2] main page.
 
 
 Things you may need to modify:
@@ -39,14 +41,14 @@ Things you may need to modify:
     "select any 'td' element that has an 'a' element but do not select the 
     first or the last elements of the found set."
 
-    To find out how to build these statements, go to http://docs.jquery.com/Selectors
+    To find out how to build these statements, go to http://api.jquery.com/selectors
 
  * Adding filter keys, i.e.:
 
     `filter[String.fromCharCode(173)] = String.fromCharCode(32)];`
 
     In order to figure out what CharCode to use for a specific symbol,
-    you can visit: http://docs.jquery.com/selectors
+    you can visit: http://www.scripttheweb.com/js/ref/javascript-character-codes
 
 
 User input:
