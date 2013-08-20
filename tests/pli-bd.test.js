@@ -116,4 +116,26 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
+  t.begin("Test PDF link selector.", 2, function(){
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
+
+      var actual = casper.evaluate(function(){
+        return $(pli_bd.article_href_selector).length;
+      });
+      t.assertEqual(actual, 1, "The PDF link selector works as expected.");
+
+      actual = casper.evaluate(function(){
+        return pli_bd.material_url;
+      });
+
+      t.assertEqual(actual,
+      "/product_files/EN00000000159335/111786.pdf", "The link is returned.");
+
+
+    });
+
+    casper.run(function(){t.done();});
+  });
+
 }());
