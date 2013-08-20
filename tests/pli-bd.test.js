@@ -138,4 +138,16 @@ casper.start();
     casper.run(function(){t.done();});
   });
 
+  t.begin("Test detail link.", 1, function(){
+    casper.open(_root_ + '/tests/includes/test1.html')
+    .then(function() {
+      var actual = casper.evaluate(function() {
+        return $('a[href=#DetailTab2]').length;
+      });
+      t.assertEqual(actual, 1, "The detail link is present.");
+    });
+
+    casper.run(function(){t.done();});
+  });
+
 }());
