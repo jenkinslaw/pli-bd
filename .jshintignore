@@ -1,2 +1,5 @@
 tmp
 ./vendor
+./casperjs*
+./phantomjs*
+
