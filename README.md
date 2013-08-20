@@ -8,20 +8,13 @@ PLI BOOK DETAILS is a GreaseMonkey user script that extracts the Chapter Listing
 
 Installation:
 -------------
-
-Download this project and cd into it's root then run:
-
-    make build
-
-Copy the script that is created in the target folder of the project to somewhere you can load it from Firefox or Chrome.
-
-This is a Greasemonkey user script. To install it, you need Greasemonkey 0.0.9 or later:
+This is a Greasemonkey user script. To install it, you need Greasemonkey 0.8 or later:  Then restart Firefox and open-file the [pli_book_details.user.js][1].
 
 Greasemokey will automatically detect the user script. Accept the default configuration and install.
 
-To un-install, go to Tools/Manage User Scripts, select "PLI BOOK DETAILS", and click Un-install.
+To uninstall, go to Tools/Manage User Scripts, select "PLI BOOK DETAILS", and click Uninstall.
 
-*Note*: Since version 0.6.1  this script can also be loaded as a chrome script.  However ajax PDF reader component may not work.
+*Note*: Since version 0.6.1  this module can also be loaded as a chrome script.  However ajax PDF reader component may not work.
 
 
 Modification:
