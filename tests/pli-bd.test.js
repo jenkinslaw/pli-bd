@@ -41,7 +41,7 @@ casper.start();
         return $(pli_bd.title_selector).first().text().match(pattern).length;
       });
 
-      t.assertEqual(actual, 1, "Check that the title is being prepended with: " + pli_bd.title_prepend);
+      t.assertEqual(actual, 1, "The title is being prepended with: " + pli_bd.title_prepend);
       casper.run(function(){t.done();});
     });
 
@@ -58,7 +58,7 @@ casper.start();
         var pattern = pli_bd.author_prepend
         return $(pli_bd.author_selector).first().text().match(pattern).length;
       });
-      t.assertEqual(actual, 1, "Check that the author is being prepended with: " + pli_bd.author_prepend);
+      t.assertEqual(actual, 1, "The author is being prepended with: " + pli_bd.author_prepend);
       casper.run(function(){t.done();});
     });
 
