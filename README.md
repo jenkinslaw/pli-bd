@@ -71,5 +71,5 @@ script is supposed to work in.
 
    [1]: https://github.com/jenkinslaw/pli-bd/raw/master/lib/pli_book_details.user.js
    [2]: http://wiki.greasespot.net/Main_Page
-   [3]: http://api.jquery.com/selectors
+   [3]: http://api.jquery.com/category/selectors
    [4]: http://jdstiles.com/java/cct.html 
