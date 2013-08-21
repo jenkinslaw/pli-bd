@@ -5,9 +5,9 @@
  * from pli_book_details.user.js GreaseMonkey script in order
  * to extract the Chapter Listings from articles at:
  * http://www.pli.edu/product/book_detail.asp*...
- * reformats the information and presents for further use.
+ * Reformats the information and presents for further use.
  *
- * @auther by David Kinzer
+ * @author by David Kinzer
  * Released under the GPL license
  * http://www.gnu.org/copyleft/gpl.html
  *
@@ -15,12 +15,12 @@
  * For an example of the type of document we are parsing see:
  * ./pli_text_example.txt
  *
- * The overal approach I took to parse the file is to
+ * The overall approach I took to parse the file is to
  *
- * 1. Download the pdf file from pli website
+ * 1. Download the PDF file from pli website
  * 2. Import all the text from the file into an array of strings
  * 3. Parse the array and generate a string with the chapter titles and
- *    and authers tagged.
+ *    and authors tagged.
  * 4. Return this string to the pli_book_details.user.js script.
  *    to complete the AJAX call.
  * --------------------------------------------------------------------
@@ -30,18 +30,34 @@
 // Get the url to use. We escapeshellcmd because
 // we use system calls to download the pdf file
 // and to get the text from the pdf.
-$material_url = $_REQUEST['material_url'];
+$material_url = pli_url_validate($_REQUEST['material_url']);
 
-// Get the text.
-$pli_text_array = get_pdf_text($material_url);
+/**
+ * Returns the validated URL or FALSE.
+ */
+function pli_url_validate($url) {
+  $pattern = '/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&amp;?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?$/';
 
-// Parse the array.
-$chunks = chunck_contents($pli_text_array);
+  $valid_url = preg_match($pattern, $url);
 
-$chapter_chunks = get_chapter_chunks($chunks);
+  if ($valid_url) {
+    return $url;
+  }
+  return FALSE;
+}
 
-if (!empty($chapter_chunks)) {
-  $titles_and_authers = parse_chunks($chapter_chunks);
+if ($material_url) {
+  // Get the text.
+  $pli_text_array = get_pdf_text($material_url);
+
+  // Parse the array.
+  $chunks = chunck_contents($pli_text_array);
+
+  $chapter_chunks = get_chapter_chunks($chunks);
+
+  if (!empty($chapter_chunks)) {
+    $titles_and_authers = parse_chunks($chapter_chunks);
+  }
 }
 
 // Return the parsed string to the caller.
