@@ -3,30 +3,38 @@ PLI Book Details [![Build Status](https://travis-ci.org/jenkinslaw/pli-bd.png?br
 
 Function:
 ---------
-PLI BOOK DETAILS is a GreaseMonkey user script that extracts the Chapter Listings from articles at: `http://www.pli.edu/product/book_detail.asp?*`, then re-formats the information and presents it back to the user as an appended div above the `details` table.
+PLI BOOK DETAILS is a GreaseMonkey user script that extracts the Chapter Listings
+from articles at: `http://www.pli.edu/product/book_detail.asp?*`, then re-formats
+the information and presents it back to the user as an appended div above the 
+`details` table.
 
 
 Installation:
 -------------
-This is a Greasemonkey user script. To install it, you need Greasemonkey 0.9 or later:  Then restart Firefox and open-file the [pli_book_details.user.js][1].
+This is a Greasemonkey user script. To install it, you need Greasemonkey 0.9 or
+later: Restart Firefox and open the [pli_book_details.user.js][1] file.
 
-Greasemokey will automatically detect the user script. Accept the default configuration and install.
+Firefox  will automatically detect the user script. Accept the default
+configuration and install.
 
-To uninstall, go to Tools/Manage User Scripts, select "PLI BOOK DETAILS", and click Uninstall.
+To uninstall, go to Tools/Manage User Scripts, select "PLI BOOK DETAILS", and
+click *Uninstall*.
 
-*Note*: Since version 0.6.1  this module can also be loaded as a chrome script.  However ajax PDF reader component may not work.
+*Note*: Since version 0.6.1  this module can also be loaded as a Chrome script.
+However ajax PDF reader component may not work.
 
-Chrome installation requires that you build the project by running `make chrome` and then
-you can use load the generated file as a chrome plugin.
+Chrome installation requires that you build the project by running `make chrome`
+from the root of the project. Use the generated file (`target/pli_book_details.chrome.user.js`)
+as a Chrome extension script.
+
+This step is needed because Chrome does not currently load any required libraries
+specified in the GreaseMOnkey script configuration.
 
 
 Modification:
 -------------
-In order to modify or add new functionality to the script, you will need to edit the pli_book_details.user.js script file.
-
-Once the file is edited, you need to uninstall the old script and install the new script.
-
-See details above for installation and uninstall process.
+In order to modify or add new functionality to the script, you will need to edit the
+*pli_book_details.user.js* script file.
 
 This script uses both JQuery and GreaseMonkey technology.
 
@@ -57,7 +65,8 @@ Things you may need to modify:
 User input:
 ----
 There is no user input for this script.
-Once it is installed the script automatically runs when the user goes to a page the script is supposed to work in.
+Once it is installed the script automatically runs when the user goes to a page the 
+script is supposed to work in.
 
    [1]: https://github.com/jenkinslaw/pli-bd/raw/master/lib/pli_book_details.user.js
    [2]: http://wiki.greasespot.net/Main_Page
