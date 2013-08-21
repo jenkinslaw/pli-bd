@@ -30,7 +30,7 @@
 // Get the url to use. We escapeshellcmd because
 // we use system calls to download the pdf file
 // and to get the text from the pdf.
-$material_url = $_POST['material_url'];
+$material_url = $_REQUEST['material_url'];
 
 // Get the text.
 $pli_text_array = get_pdf_text($material_url);
