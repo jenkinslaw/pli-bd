@@ -52,14 +52,15 @@ Things you may need to modify:
     "select any 'td' element that has an 'a' element but do not select the 
     first or the last elements of the found set."
 
-    To find out how to build these statements, go to http://api.jquery.com/selectors
+    To find out how to build these statements, go to [JQuery Selectors][3] page. 
 
  * Adding filter keys, i.e.:
 
     `filter[String.fromCharCode(173)] = String.fromCharCode(32)];`
 
-    In order to figure out what CharCode to use for a specific symbol,
-    you can visit: http://www.scripttheweb.com/js/ref/javascript-character-codes
+
+    In order to figure out what char code to use for a specific symbol,
+    you can visit: [Uncle Jim's Char Code Translator][4] 
 
 
 User input:
@@ -70,3 +71,5 @@ script is supposed to work in.
 
    [1]: https://github.com/jenkinslaw/pli-bd/raw/master/lib/pli_book_details.user.js
    [2]: http://wiki.greasespot.net/Main_Page
+   [3]: http://api.jquery.com/selectors
+   [4]: http://jdstiles.com/java/cct.html 
