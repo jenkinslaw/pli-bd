@@ -28,7 +28,7 @@ from the root of the project. Use the generated file (`target/pli_book_details.c
 as a Chrome extension script.
 
 This step is needed because Chrome does not currently load any required libraries
-specified in the GreaseMOnkey script configuration.
+specified in the GreaseMonkey script configuration.
 
 
 Modification:
