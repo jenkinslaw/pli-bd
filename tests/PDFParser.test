@@ -4,6 +4,7 @@
  * Unit test parsing functions.
  */
 
+$_REQUEST['material_url'] = 'foo';
 include_once 'lib/parse_pli_pdf.php';
 
 class ParsePLITest extends PHPUnit_Framework_TestCase {
@@ -11,9 +12,6 @@ class ParsePLITest extends PHPUnit_Framework_TestCase {
   /**
    * Overrides parent::setUp().
    */
-  public function setUp() {
-    $_REQUEST['material_url'] = 'foo';
-  }
 
   /**
    * Check that the URL validates correctly.
