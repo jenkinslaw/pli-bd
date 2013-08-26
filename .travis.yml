@@ -3,6 +3,8 @@ branches:
     - "master"
 
 before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq poppler-utils
   - echo "installing PhantomJS 1.9.0"
   - wget http://phantomjs.googlecode.com/files/phantomjs-1.9.0-linux-x86_64.tar.bz2
   - tar -xvf phantomjs-1.9.0-linux-x86_64.tar.bz2
