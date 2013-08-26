@@ -147,7 +147,7 @@ function chunck_contents($contents = array()) {
       if (!$i) {
         $i = 0;
       }
-      $chunk[$i] = $line;
+      $chunk[$i] = trim($line);
       $i++;
     }
     else {
@@ -243,18 +243,25 @@ function get_chapter_chunks($chunks = array()) {
  *
  * Given an array of Chapter Chunks.
  */
-function parse_chunks($chapter_chunks) {
+function parse_chunks($chapter_chunks = array()) {
+
+  $output = '';
+
+  if (!is_array($chapter_chunks)) {
+    return $output;
+  }
 
   foreach ($chapter_chunks as $chunk) {
 
     foreach ($chunk as $line) {
       // Replace page number lines.
-      $output .= preg_replace('/\.+.*[0-9]+/', ' ', $line);
+      $output .= preg_replace('/\.+.*[0-9]+/', "_author_prepend_", $line);
+      $output .= ' ';
     };
 
   }
 
-  $titles = preg_replace('/\d+\. ([A-Z][A-Z]+)/', '_title_prepend_ $1', $output);
+  $titles = preg_replace('/\d+\.\s*([A-Z][A-Z]+)/', '_title_prepend_ $1', $output);
 
-  return $titles;
+  return trim($titles);
 }
