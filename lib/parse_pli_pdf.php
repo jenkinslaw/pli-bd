@@ -201,7 +201,13 @@ function _is_blank($line = '') {
  * @return Array
  *   Chunks that contain chapter titles
  */
-function get_chapter_chunks($chunks) {
+function get_chapter_chunks($chunks = array()) {
+
+  $chapter_chunks = array();
+
+  if (!is_array($chunks)) {
+    return $chapter_chunks;
+  }
 
   // In this case I noticed that the chapter chunks are
   // all arrays of multiple lines.
