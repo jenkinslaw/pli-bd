@@ -8,7 +8,12 @@ include_once 'lib/parse_pli_pdf.php';
 
 class ParsePLITest extends PHPUnit_Framework_TestCase {
 
-  protected $pdfText;
+  /**
+   * Overrides parent::setUp().
+   */
+  public function setUP() {
+    $_REQUEST['material_url'] = 'foo';
+  }
 
   /**
    * Check that the URL validates correctly.
