@@ -1,8 +1,8 @@
-.PHONY: default test casperjs jshint chrome deploy
+.PHONY: default test casperjs jshint chrome deploy phpunit
 
 default: test
 
-test: casperjs jshint
+test: casperjs jshint phpunit
 
 casperjs:
 
@@ -14,6 +14,9 @@ endif
 
 jshint:
 	jshint .
+
+phpunit:
+	phpunit --colors tests/*.test
 
 CHROMEQUERY = \/\/ @include_jquery
 chrome:

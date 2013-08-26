@@ -1,0 +1,143 @@
+<?php
+/**
+ * @file
+ * Unit test parsing functions.
+ */
+
+include_once 'lib/parse_pli_pdf.php';
+
+class ParsePLITest extends PHPUnit_Framework_TestCase {
+
+  protected $pdfText;
+
+  /**
+   * Check that the URL validates correctly.
+   */
+  public function testPlitURLValidate() {
+    $fake_url = pli_url_validate('ls -la');
+    $this->assertFalse($fake_url, 'Fake URLs return FALSE.');
+
+    $url = pli_url_validate('http://www.google.com');
+    $this->assertEquals($url, 'http://www.google.com',
+      'Properly formatted URLs are returned.');
+  }
+
+  /**
+   * Verify pdf_path() works as expected.
+   */
+  public function testGetPdfPath() {
+    $actual = get_pdf_path('');
+    $expected = 'tests/includes/test.pdf';
+    $this->assertEquals($actual, $expected,
+      'pdf_path() returns the default test file path.');
+  }
+
+  /**
+   * Verify that pdf_to_text returns an array of strings.
+   */
+  public function testPdfToText() {
+    $text = get_pdf_text('../tests/includes/test.pdf');
+    $this->assertTrue(is_array($text), 'Text is an array.');
+  }
+
+  /**
+   * Verify that chunck_contents() works as expected.
+   */
+  public function testChunckContents() {
+    $expected = array();
+    $actual = chunck_contents();
+    $this->assertEquals($expected, $actual, 'chunk_contents() returns array');
+
+    $actual = chunck_contents('no array');
+    $this->assertEquals($expected, $actual, 'chunk_contents("no array") returns array');
+
+    $test = array('a', 'b', 'c' , 'd');
+    $actual = chunck_contents($test);
+
+    $this->assertEquals($test, $actual,
+      'chunks_contents() returns back the array when no empty lines');
+
+    $this->assertTrue(empty($empty), "Spaces are empty.");
+
+    $test = array('a', 'b', '', 'c' , 'd');
+    $expected = array(array('a', 'b'), array('c', 'd'));
+    $actual = chunck_contents($test);
+
+    $this->assertEquals($expected, $actual,
+      'chunks_contents chunks content as expected.');
+
+  }
+
+
+  /**
+   * Verify that chapter_chunks() works as expected.
+   */
+  public function testGetChapterChunks() {
+
+    $chapters = get_chapter_chunks();
+    $this->assertEquals(0, count($chapters), "get_chapter_chunks() returns an empty array by default.");
+
+    $chunks = array(
+      array('1. title 1', 'b'),
+      array('a', 'b', 'c'),
+      array('a'),
+      array('a', '2. title2'),
+    );
+
+    $chapters = get_chapter_chunks($chunks);
+    $this->assertEquals(2, count($chapters), "get_chapter_chunks() only returns title containing chunks.");
+
+    $chunks = array(
+      array('a', 'b', 'c'),
+      array('a'),
+    );
+    $chapters = get_chapter_chunks($chunks);
+    $this->assertEquals(0, count($chapters), "get_chapter_chunks() only returns title containing chunks.");
+  }
+
+
+  /**
+   * Verify parse_chunks() works as expected.
+   */
+  public function testParseChunks() {
+    $actual = parse_chunks();
+    $this->assertEquals('', $actual, 'parse_chunks() returns an empty string by default.');
+
+    $actual = parse_chunks(FALSE);
+    $this->assertEquals('', $actual, 'parse_chunks() returns an empty string by default.');
+
+    $chunks = array(
+      array('1. FIRST TITLE','.........98', 'b'),
+      array('a', 'b', 'c'),
+      array('a'),
+      array('a', '2. SECOND TITLE', 'c', 'e'),
+      array('a'),
+    );
+    $actual = parse_chunks($chunks);
+    $expected = '_title_prepend_ FIRST TITLE _author_prepend_ b a b c a a _title_prepend_ SECOND TITLE c e a';
+
+    $this->assertEquals($expected, $actual, 'parse_chunks() works as expected.');
+  }
+
+
+  /**
+   * Functional test for parser.
+   */
+  public function testPliParser() {
+    $pli_text_array = get_pdf_text('../tests/includes/test.pdf');
+
+    // Parse the array.
+    $chunks = chunck_contents($pli_text_array);
+
+    $chapter_chunks = get_chapter_chunks($chunks);
+
+    $titles_and_authers = parse_chunks($chapter_chunks);
+
+    $title_match = preg_match('/\_title\_prepend_/', $titles_and_authers);
+    $this->assertEquals(1, $title_match, 'Titles were found.');
+
+    $author_match = preg_match('/\_author\_prepend_/', $titles_and_authers);
+    $this->assertEquals(1, $author_match, 'Authors were found.');
+  }
+
+}
