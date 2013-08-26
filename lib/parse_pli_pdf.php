@@ -126,13 +126,24 @@ function get_pdf_path($material_url) {
  * @return array
  *   of Chunks;
  */
-function chunck_contents($contents) {
+function chunck_contents($contents = array()) {
 
   $chunks = array();
 
+  if (!is_array($contents)) {
+    return $chunks;
+  }
+
+  if (!_has_empty_lines($contents)) {
+    return $contents;
+  }
+
+  // Push an empty value on the last part of the array to return all lines.
+  array_push($contents, '');
+
   foreach ($contents as $line) {
 
-    if (trim($line)) {
+    if (!_is_blank($line)) {
       if (!$i) {
         $i = 0;
       }
@@ -153,6 +164,31 @@ function chunck_contents($contents) {
   }
 
   return $chunks;
+}
+
+/**
+ * Checks if an array has any blank values.
+ */
+function _has_empty_lines($contents = array()) {
+  $has_empty_lines = FALSE;
+  if (is_array($contents)) {
+    foreach ($contents as $line) {
+      if (_is_blank($line)) {
+        $has_empty_lines = TRUE;
+        break;
+      }
+    }
+  }
+  return $has_empty_lines;
+}
+
+/**
+ * Checks that a line is blank or not.
+ */
+function _is_blank($line = '') {
+  (String) $line;
+  $match = 1 === preg_match('/^\s*$/', $line);
+  return $match;
 }
 
 
