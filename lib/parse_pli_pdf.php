@@ -140,21 +140,18 @@ function chunck_contents($contents = array()) {
 
   // Push an empty value on the last part of the array to return all lines.
   array_push($contents, '');
+  $i = 0;
+  $j = 0;
+  $chunk = array();
 
   foreach ($contents as $line) {
 
     if (!_is_blank($line)) {
-      if (!$i) {
-        $i = 0;
-      }
       $chunk[$i] = trim($line);
       $i++;
     }
     else {
-      if (!$j) {
-        $j = 0;
-      }
-      if ($chunk) {
+      if (!empty($chunk)) {
         $chunks[$j] = $chunk;
         $j++;
       }
@@ -211,10 +208,9 @@ function get_chapter_chunks($chunks = array()) {
 
   // In this case I noticed that the chapter chunks are
   // all arrays of multiple lines.
+  $i = 0;
+
   foreach ($chunks as $chunk) {
-    if (!$i) {
-      $i = 0;
-    }
 
     if (count($chunk) > 1) {
       // Check that the first or the second line contain /[0-9]+\./.

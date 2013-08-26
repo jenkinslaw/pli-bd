@@ -11,7 +11,7 @@ class ParsePLITest extends PHPUnit_Framework_TestCase {
   /**
    * Overrides parent::setUp().
    */
-  public function setUP() {
+  public function setUp() {
     $_REQUEST['material_url'] = 'foo';
   }
 
