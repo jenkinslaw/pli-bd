@@ -81,15 +81,29 @@ else {
  */
 function get_pdf_text($material_url) {
 
-  // Use url to wget the pdf file.
-  system("wget -O /tmp/pli.pdf $material_url", $wget_status);
+  $path = get_pdf_path($material_url);
 
   // Use pdftotext program to get all the text from.
-  exec("pdftotext -layout /tmp/pli.pdf -",
+  exec("pdftotext -layout $path -",
   $pli_text_array, $pdftotext_status);
 
   return $pli_text_array;
 
+}
+
+/**
+ * Gets the PDF and returns the path.
+ *
+ * Returns a test file path by default.
+ */
+function get_pdf_path($material_url) {
+  $path = 'tests/includes/test.pdf';
+  if (pli_url_validate($material_url)) {
+    // Use url to wget the pdf file.
+    $path = '/tmp/pli.pdf';
+    system("wget -O $path $material_url", $wget_status);
+  }
+  return $path;
 }
 
 
