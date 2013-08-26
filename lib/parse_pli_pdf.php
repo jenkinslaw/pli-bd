@@ -113,6 +113,9 @@ function get_pdf_text($material_url) {
  *   of Chunks;
  */
 function chunck_contents($contents) {
+
+  $chunks = array();
+
   foreach ($contents as $line) {
 
     if (trim($line)) {
@@ -180,7 +183,7 @@ function get_chapter_chunks($chunks) {
 
 
 /**
- * Return a string that's been parsed for chapter titles and authers.
+ * Return a string that's been parsed for chapter titles and authors.
  *
  * Given an array of Chapter Chunks.
  */
