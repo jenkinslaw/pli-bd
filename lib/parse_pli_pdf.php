@@ -257,7 +257,7 @@ function parse_chunks($chapter_chunks = array()) {
 
   }
 
-  $titles = preg_replace('/\d+\.\s*([A-Z][A-Z]+)/', '_title_prepend_ $1', $output);
+  $titles = preg_replace('/\d+\.\s*([A-Z]+)/', '_title_prepend_ $1', $output);
 
   return trim($titles);
 }
