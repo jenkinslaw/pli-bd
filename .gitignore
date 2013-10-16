@@ -2,3 +2,4 @@ vendor/*
 *.swp
 target/*
 composer.lock
+casperjs*
