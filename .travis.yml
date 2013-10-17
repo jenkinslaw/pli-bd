@@ -1,9 +1,11 @@
 language: php
-  php:
-    - 5.3
+
+
+php:
+  - 5.3
 
 env:
-  global:
+  - global:
     - PHANTOMJS_EXECUTABLE="bin/phantomjs190 --local-to-remote-url-access=yes --ignore-ssl-errors=yes"
     - CASPERJS="casperjs/bin/casperjs"
 
@@ -18,10 +20,9 @@ install:
   - make install-casperjs
   - npm install -g bower
 
-
 before_script:
   - bower install
-  - "npm install -g jshint@2.0.1"
+  - npm install -g jshint@2.0.1
 
 
 script:
