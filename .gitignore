@@ -3,3 +3,5 @@ vendor/*
 target/*
 composer.lock
 casperjs*
+phantomjs*
+bin/phantomjs*
