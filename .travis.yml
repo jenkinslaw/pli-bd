@@ -5,10 +5,9 @@ php:
   - 5.3
 
 env:
-  - global:
+  global:
     - PHANTOMJS_EXECUTABLE="bin/phantomjs190 --local-to-remote-url-access=yes --ignore-ssl-errors=yes"
     - CASPERJS="casperjs/bin/casperjs"
-
 
 before_install:
   - sudo apt-get update -qq
