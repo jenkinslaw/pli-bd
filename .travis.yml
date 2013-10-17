@@ -1,23 +1,28 @@
 language: php
-php:
-  - 5.3
+  php:
+    - 5.3
+
+env:
+  global:
+    - PHANTOMJS_EXECUTABLE="bin/phantomjs190 --local-to-remote-url-access=yes --ignore-ssl-errors=yes"
+    - CASPERJS="casperjs/bin/casperjs"
+
 
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq poppler-utils
-  - npm install -g bower
+
 
 install:
   - make install-phamtomjs
   - make install-casperjs
-  - bower install
+  - npm install -g bower
+
 
 before_script:
+  - bower install
   - "npm install -g jshint@2.0.1"
+
 
 script:
   - make test
-
-env:
-  - PHANTOMJS_EXECUTABLE="bin/phantomjs190 --local-to-remote-url-access=yes --ignore-ssl-errors=yes" CASPERJS="casperjs/bin/casperjs"
-
