@@ -16,7 +16,7 @@ before_install:
 
 
 install:
-  - make install-phamtomjs
+  - make install-phantomjs
   - make install-casperjs
   - npm install -g bower
 
